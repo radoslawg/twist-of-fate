@@ -9,11 +9,12 @@ from pyramid.paster import (
     setup_logging,
     )
 
-from ..models import (
+from tof.models import (
     DBSession,
     MyModel,
     Base,
     )
+from tof.models.character import Character
 
 def usage(argv):
     cmd = os.path.basename(argv[0])
@@ -32,4 +33,5 @@ def main(argv=sys.argv):
     Base.metadata.create_all(engine)
     with transaction.manager:
         model = MyModel(name='one', value=1)
+        model = Character(name='Dare Devil', played_by="Janek", fate_points=11, refresh_rate=11)
         DBSession.add(model)
