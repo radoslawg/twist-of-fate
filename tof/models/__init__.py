@@ -17,7 +17,6 @@ from sqlalchemy import (
     Text,
     )
 
-
 class MyModel(Base):
     __tablename__ = 'models'
     id = Column(Integer, primary_key=True)

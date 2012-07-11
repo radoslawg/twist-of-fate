@@ -11,10 +11,10 @@ from pyramid.paster import (
 
 from tof.models import (
     DBSession,
-    MyModel,
     Base,
     )
 from tof.models.character import Character
+from tof.models.sotc import Aspect, Stunt, Skill, Ladder
 
 def usage(argv):
     cmd = os.path.basename(argv[0])
@@ -32,6 +32,11 @@ def main(argv=sys.argv):
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
     with transaction.manager:
-        model = MyModel(name='one', value=1)
-        model = Character(name='Dare Devil', played_by="Janek", fate_points=11, refresh_rate=11)
-        DBSession.add(model)
+        character = Character(name='Jet Black, Flying Soldier', played_by="John", fate_points=11, refresh_rate=11)
+        DBSession.add(character)
+        aspect = Aspect(name='Amazing Jet Pack!')
+        DBSession.add(aspect)
+        skill = Skill(name='Athletics', level=Ladder.SUPERB)
+        DBSession.add(skill)
+        stunt = Stunt(name='The Amazing Jet Pack')
+        DBSession.add(stunt)
