@@ -36,7 +36,7 @@ def main(argv=sys.argv):
         DBSession.add(character)
         aspect = Aspect(name='Amazing Jet Pack!')
         DBSession.add(aspect)
-        skill = Skill(name='Athletics', level=Ladder.SUPERB)
+        skill = Skill(name='Athletics', level=Ladder.superb)
         DBSession.add(skill)
         stunt = Stunt(name='The Amazing Jet Pack')
         DBSession.add(stunt)

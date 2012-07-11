@@ -53,12 +53,13 @@ class TestSotC(unittest.TestCase):
         from tof.models.sotc import Skill, Ladder
         with transaction.manager:
             name = "Superlative Skill"
-            model = Skill(name=name, level=Ladder.SUPERB)
+            model = Skill(name=name, level=Ladder.superb)
             DBSession.add(model)
 
         with transaction.manager:
             model = DBSession.query(Skill).filter(Skill.name==name).one()
             self.assertEqual(model.name, name)
+            self.assertEqual(model.level, Ladder.superb.value)
 
         with transaction.manager:
             DBSession.delete(model)
