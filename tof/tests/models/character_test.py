@@ -31,14 +31,15 @@ class TestCharacter(unittest.TestCase):
 
     def character_create_test(self):
         from tof.models.character import Character
-        with transaction.manager:
-            model = Character(name='Mack Silver, Entrepreneurial Pilot', played_by="John")
-            DBSession.add(model)
+        try:
+            with transaction.manager:
+                model = Character(name='Mack Silver, Entrepreneurial Pilot', played_by="John")
+                DBSession.add(model)
 
-        with transaction.manager:
-            model = DBSession.query(Character).filter(Character.name=="Mack Silver, Entrepreneurial Pilot").one()
-            self.assertEqual(model.name, "Mack Silver, Entrepreneurial Pilot")
-            self.assertEqual(model.played_by, "John")
-
-        with transaction.manager:
-            DBSession.delete(model)
+            with transaction.manager:
+                model = DBSession.query(Character).filter(Character.name=="Mack Silver, Entrepreneurial Pilot").one()
+                self.assertEqual(model.name, "Mack Silver, Entrepreneurial Pilot")
+                self.assertEqual(model.played_by, "John")
+        finally:
+            with transaction.manager:
+                DBSession.delete(model)

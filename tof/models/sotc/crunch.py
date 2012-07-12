@@ -5,6 +5,7 @@ from sqlalchemy import (
     Integer,
     Text,
     )
+from sqlalchemy.schema import ForeignKey
 
 # enumerations
 from tof.recipies.declarative_enum import DeclEnum
@@ -28,17 +29,20 @@ class Aspect(Base):
     __tablename__ = '.'.join([sotc_tablename, 'aspects'])
     id = Column(Integer, primary_key=True)
     name = Column(Text, unique=True)
+    character_id = Column(Integer, ForeignKey('characters.id'))
 
 class Stunt(Base):
     __tablename__ = '.'.join([sotc_tablename, 'stunts'])
     id = Column(Integer, primary_key=True)
     name = Column(Text, unique=True)
+    character_id = Column(Integer, ForeignKey('characters.id'))
 
 class Skill(Base):
     __tablename__ = '.'.join([sotc_tablename, 'skills'])
     id = Column(Integer, primary_key=True)
     name = Column(Text, unique=True)
     level = Column(Ladder.db_type())
+    character_id = Column(Integer, ForeignKey('characters.id'))
 
 class Consequence(Base):
     __tablename__ = '.'.join([sotc_tablename, 'consequences'])

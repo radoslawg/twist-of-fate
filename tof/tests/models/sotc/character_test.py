@@ -31,16 +31,35 @@ class TestCharacter(unittest.TestCase):
 
     def character_create_test(self):
         from tof.models.sotc.character import SotCCharacter as Character
-        with transaction.manager:
-            model = Character(name='Mack Silver, Entrepreneurial Pilot', played_by="John", fate_points=11, refresh_rate=11)
-            DBSession.add(model)
+        from tof.models.sotc.crunch import Skill, Aspect, Stunt, Ladder
 
-        with transaction.manager:
-            model = DBSession.query(Character).filter(Character.name=="Mack Silver, Entrepreneurial Pilot").one()
-            self.assertEqual(model.name, "Mack Silver, Entrepreneurial Pilot")
-            self.assertEqual(model.played_by, "John")
-            self.assertEqual(model.fate_points, 11)
-            self.assertEqual(model.refresh_rate, 11)
+        try:
+            with transaction.manager:
+                aspects = [Aspect(name="\"Lucy\", the Century Clipper"), Aspect(name="Fly by Night")]
+                skills = [Skill(name="Contacting", level=Ladder.superb), Skill(name="Pilot", level=Ladder.great)]
+                stunts = [Stunt(name="Walk the Walk"), Stunt(name="Lucy (Personal Gadget)")]
+                model = Character(name='Mack Silver, Entrepreneurial Pilot', played_by="John", skills=skills, aspects=aspects, stunts=stunts, fate_points=11, refresh_rate=11)
+                DBSession.add(model)
 
-        with transaction.manager:
-            DBSession.delete(model)
+            with transaction.manager:
+                model = DBSession.query(Character).filter(Character.name=="Mack Silver, Entrepreneurial Pilot").one()
+                self.assertEqual(model.name, "Mack Silver, Entrepreneurial Pilot")
+                self.assertEqual(model.played_by, "John")
+                self.assertEqual(model.fate_points, 11)
+                self.assertEqual(model.refresh_rate, 11)
+                self.assertItemsEqual([m.name for m in model.aspects], [a.name for a in aspects])
+                self.assertItemsEqual([{m.name: m.level} for m in model.skills], [{m.name: m.level.value} for m in skills])
+                self.assertItemsEqual([m.name for m in model.stunts], [a.name for a in stunts])
+        finally:
+            with transaction.manager:
+                c = DBSession.query(Character).filter(Character.name=="Mack Silver, Entrepreneurial Pilot").one()
+                DBSession.delete(c)
+                for skill in skills: 
+                    s = DBSession.query(Skill).filter(Skill.name==skill.name).one()
+                    DBSession.delete(s)
+                for aspect in aspects: 
+                    s = DBSession.query(Aspect).filter(Aspect.name==aspect.name).one()
+                    DBSession.delete(s)
+                for stunt in stunts: 
+                    s = DBSession.query(Stunt).filter(Stunt.name==stunt.name).one()
+                    DBSession.delete(s)
