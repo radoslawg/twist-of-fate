@@ -1,11 +1,10 @@
-from . import Base
+from tof.models import Base
+from tof.models.sotc import sotc_tablename
 from sqlalchemy import (
     Column,
     Integer,
     Text,
     )
-
-sotc_tablename = '.'.join(__name__.split('.')[2:])
 
 # enumerations
 from tof.recipies.declarative_enum import DeclEnum
@@ -21,6 +20,9 @@ class Ladder(DeclEnum):
     good = "3", "good"
     fair = "2", "fair"
     average = "1", "average"
+
+#class SotCCharacter(Character):
+#    __mapper_args__ = {'polymorphic_identity':
 
 class Aspect(Base):
     __tablename__ = '.'.join([sotc_tablename, 'aspects'])

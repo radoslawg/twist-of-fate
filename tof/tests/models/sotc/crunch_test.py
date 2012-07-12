@@ -22,7 +22,7 @@ class TestSotC(unittest.TestCase):
         testing.tearDown()
 
     def aspect_create_test(self):
-        from tof.models.sotc import Aspect
+        from tof.models.sotc.crunch import Aspect
         with transaction.manager:
             name = "Astounding Aspect"
             model = Aspect(name=name)
@@ -36,7 +36,7 @@ class TestSotC(unittest.TestCase):
             DBSession.delete(model)
 
     def stunt_create_test(self):
-        from tof.models.sotc import Stunt
+        from tof.models.sotc.crunch import Stunt
         with transaction.manager:
             name = "Stupendous Stunt"
             model = Stunt(name=name)
@@ -50,7 +50,7 @@ class TestSotC(unittest.TestCase):
             DBSession.delete(model)
 
     def skill_create_test(self):
-        from tof.models.sotc import Skill, Ladder
+        from tof.models.sotc.crunch import Skill, Ladder
         with transaction.manager:
             name = "Superlative Skill"
             model = Skill(name=name, level=Ladder.superb)

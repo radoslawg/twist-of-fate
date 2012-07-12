@@ -13,8 +13,8 @@ from tof.models import (
     DBSession,
     Base,
     )
-from tof.models.character import Character
-from tof.models.sotc import Aspect, Stunt, Skill, Ladder
+from tof.models.sotc.character import SotCCharacter as Character
+from tof.models.sotc.crunch import Aspect, Stunt, Skill, Ladder
 
 def usage(argv):
     cmd = os.path.basename(argv[0])
