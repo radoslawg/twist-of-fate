@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    metal:define-macro="sotc">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href='http://fonts.googleapis.com/css?family=Lobster|Ceviche+One|Kaushan+Script&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <title>template: Spirit of the Century</title>
+    </head>
+    <body>
+        <div style="background-color:#eee; padding-bottom:10px;">
+            <div style="width: 70%; margin:auto;">
+                <h1 style="font-family: 'Ceviche One', cursive;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 46px;
+                    text-transform: none;
+                    text-decoration: none;
+                    letter-spacing: 0em;
+                    word-spacing: 0em;
+                    line-height: 1.4;">Spirit of the Century</h1>
+                <p style="font-family: 'Kaushan Script', cursive;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                text-transform: none;
+                text-decoration: none;
+                letter-spacing: 0em;
+                word-spacing: 0em;
+                line-height: 1.4;
+                width:70%;">
+                The deadly Doctor Methuselah seeks to unravel time itself with his solution to the Eternity Equation… Gorilla Khan stalks darkest Africa from conquered Atlantis… Mad scientists, strange sorcerors, and power-hungry dictators all seek to undo the fate of humanity. It’s the final century of the second millennium – and you are our last hope!
+                </p>
+            </div>
+        </div>
+        <div style="width: 70%; margin:auto;">
+            <tal:block metal:define-slot="content">
+        </tal:block>
+        </div>
+    </body>
+</html>

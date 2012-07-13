@@ -3,12 +3,15 @@ from pyramid.view import view_config
 
 from sqlalchemy.exc import DBAPIError
 
-from .models import (
+from tof.models import (
     DBSession,
     MyModel,
     )
 
-@view_config(route_name='home', renderer='templates/mytemplate.pt')
+from os.path import join
+from tof import templates
+
+@view_config(route_name='home', renderer=join(templates, 'mytemplate.pt'))
 def my_view(request):
     try:
         one = DBSession.query(MyModel).filter(MyModel.name=='one').first()
@@ -31,4 +34,5 @@ might be caused by one of the following things:
 After you fix the problem, please restart the Pyramid application to
 try it again.
 """
+
 
