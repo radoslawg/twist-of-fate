@@ -3,16 +3,27 @@
     xmlns:metal="http://xml.zope.org/namespaces/metal"
     metal:use-macro="sotc.macros['sotc']">
     <tal:block metal:fill-slot="content">
-    <h2 style="font-family: 'Ceviche One', cursive;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    text-transform: none;
-    text-decoration: none;
-    letter-spacing: 0em;
-    word-spacing: 0em;
-    line-height: 1.4;">
-    Awesome character content
-    </h2>
+    <div style="font-family: 'Yesteryear', cursive;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: none;
+        text-decoration: none;
+        letter-spacing: 0em;
+        word-spacing: 0em;
+        line-height: 1.4;">
+
+        <h2>
+            Starring:
+        </h2>
+        <h2>
+            Played by:
+        </h2>
+        <h2>
+            Current FATE points:
+        </h2>
+        <h2>
+            Refresh rate:
+        </h2>
+    </div>
     </tal:block>
 </html>
