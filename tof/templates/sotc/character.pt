@@ -12,18 +12,21 @@
         word-spacing: 0em;
         line-height: 1.4;">
 
+		<div tal:repeat="char characters">
         <h2>
-            Starring:
+            Starring: ${char.name}
         </h2>
         <h2>
-            Played by:
+            Played by: ${char.played_by}
         </h2>
         <h2>
-            Current FATE points:
+            Current FATE points: ${char.fate_points}
         </h2>
         <h2>
-            Refresh rate:
+            Refresh rate: ${char.refresh_rate}
         </h2>
+		<hr/>
+		</div>
     </div>
     </tal:block>
 </html>

@@ -40,3 +40,5 @@ def main(argv=sys.argv):
         DBSession.add(skill)
         stunt = Stunt(name='The Amazing Jet Pack')
         DBSession.add(stunt)
+        character = Character(name='Henry White, Gentelman Thief', played_by="Radek", fate_points=10, refresh_rate=3)
+        DBSession.add(character)
