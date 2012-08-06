@@ -1,0 +1,8 @@
+Starting server in PID 2610.
+serving on http://0.0.0.0:6543
+2012-07-24 13:17:09,603 INFO  [sqlalchemy.engine.base.Engine][Dummy-1] BEGIN (implicit)
+2012-07-24 13:17:09,605 INFO  [sqlalchemy.engine.base.Engine][Dummy-1] SELECT models.id AS models_id, models.name AS models_name, models.value AS models_value 
+FROM models 
+WHERE models.name = ?
+ LIMIT ? OFFSET ?
+2012-07-24 13:17:09,605 INFO  [sqlalchemy.engine.base.Engine][Dummy-1] ('one', 1, 0)
